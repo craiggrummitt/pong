@@ -13,6 +13,7 @@
     }
 
     _dynamicBehavior.density = 1000.0f;
+    _dynamicBehavior.allowsRotation = false;
     return _dynamicBehavior;
 }
 

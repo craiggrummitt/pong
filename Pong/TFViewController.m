@@ -1,9 +1,11 @@
 #import "TFViewController.h"
 #import "TFBall.h"
 #import "TFPaddle.h"
+#import "TFModel.h"
 
 static NSString *TFViewControllerBoundaryIdentifierTop = @"top";
 static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
+
 
 @implementation TFViewController
 
@@ -11,11 +13,14 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
 {
     [super viewDidLoad];
 
+    self.model = [[TFModel alloc] init];
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 
-    // Rotate the first player's instructions
+    // Rotate the first player's instructions and score
     self.playerOneInstructions.transform = CGAffineTransformMakeRotation(M_PI);
-
+    self.score1Label.transform = CGAffineTransformMakeRotation(M_PI);
+    self.score1Label.center = self.view.center;
+    self.score2Label.center = self.view.center;
     // Set up collision detection
     self.collider = [[UICollisionBehavior alloc] initWithItems:@[self.ball, self.playerOnePaddle, self.playerTwoPaddle]];
     self.collider.collisionMode = UICollisionBehaviorModeEverything;
@@ -47,6 +52,7 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
     self.tapToStartRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startGame)];
     [self.view addGestureRecognizer:self.tapToStartRecognizer];
     self.tapToStartRecognizer.enabled = NO;
+    self.wellDone.hidden = YES;
 
     // Show the 'tap to start' prompt
     [self promptNextBall];
@@ -55,7 +61,6 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
 // This is responsible for moving the ball back to the center,
 // and telling players to tap for a new game
 - (void)promptNextBall {
-    self.startInstructions.hidden = NO;
 
     self.ball.paused = YES;
     self.ball.center = self.view.center;
@@ -63,13 +68,31 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
 
     self.tapToStartRecognizer.enabled = YES;
 }
-
 #pragma mark - UICollisionDelegate
 
 - (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
 
     // Only end the current game if the ball hit either the top or bottom screen edge
-    if ([@[TFViewControllerBoundaryIdentifierBottom, TFViewControllerBoundaryIdentifierTop] containsObject:identifier]) {
+    if ([@[TFViewControllerBoundaryIdentifierBottom,TFViewControllerBoundaryIdentifierTop] containsObject:identifier]) {
+            if ([@[TFViewControllerBoundaryIdentifierBottom] containsObject:identifier]) {
+                self.model.score1++;
+            } else {
+                self.model.score2++;
+            }
+        self.score1Label.text = [NSString stringWithFormat:@" %lu - %lu",(unsigned long)self.model.score1,(unsigned long)self.model.score2];
+        self.score2Label.text = [NSString stringWithFormat:@" %lu - %lu",(unsigned long)self.model.score1,(unsigned long)self.model.score2];
+        if (self.model.score1==10 || self.model.score2==10) {
+            self.wellDone.hidden = NO;
+            if (self.wellDoneNormalWayUp && self.model.score1==10) {
+                self.wellDone.transform = CGAffineTransformMakeRotation(M_PI);
+                self.wellDoneNormalWayUp=NO;
+            } else if (!self.wellDoneNormalWayUp && self.model.score2==10) {
+                self.wellDoneNormalWayUp=YES;
+            }
+            self.wellDone.center = self.view.center;
+        } else {
+            self.startInstructions.hidden = NO;
+        }
         [self promptNextBall];
     }
 }
@@ -78,6 +101,7 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
 - (void)startGame {
     self.tapToStartRecognizer.enabled = NO;
     self.startInstructions.hidden = YES;
+    self.wellDone.hidden = YES;
 
     self.ball.paused = NO;
 

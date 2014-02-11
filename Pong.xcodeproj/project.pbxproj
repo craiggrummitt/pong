@@ -23,6 +23,8 @@
 		A620B7CA1866102E00C8187C /* PongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A620B7C91866102E00C8187C /* PongTests.m */; };
 		A620B7D618661A5D00C8187C /* TFPaddle.m in Sources */ = {isa = PBXBuildFile; fileRef = A620B7D518661A5D00C8187C /* TFPaddle.m */; };
 		A620B7D918661AAD00C8187C /* TFBall.m in Sources */ = {isa = PBXBuildFile; fileRef = A620B7D818661AAD00C8187C /* TFBall.m */; };
+		CE81000918A9AFA200662F66 /* pong.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE81000818A9AFA200662F66 /* pong.jpg */; };
+		CEEBEF3418A989A60098B62C /* TFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEBEF3318A989A60098B62C /* TFModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,9 @@
 		A620B7D518661A5D00C8187C /* TFPaddle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPaddle.m; sourceTree = "<group>"; };
 		A620B7D718661AAD00C8187C /* TFBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFBall.h; sourceTree = "<group>"; };
 		A620B7D818661AAD00C8187C /* TFBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFBall.m; sourceTree = "<group>"; };
+		CE81000818A9AFA200662F66 /* pong.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pong.jpg; sourceTree = "<group>"; };
+		CEEBEF3218A989A60098B62C /* TFModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFModel.h; sourceTree = "<group>"; };
+		CEEBEF3318A989A60098B62C /* TFModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +134,8 @@
 				A620B7D518661A5D00C8187C /* TFPaddle.m */,
 				A620B7D718661AAD00C8187C /* TFBall.h */,
 				A620B7D818661AAD00C8187C /* TFBall.m */,
+				CEEBEF3218A989A60098B62C /* TFModel.h */,
+				CEEBEF3318A989A60098B62C /* TFModel.m */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -136,6 +143,7 @@
 		A620B7A51866102E00C8187C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE81000818A9AFA200662F66 /* pong.jpg */,
 				A620B7A61866102E00C8187C /* Pong-Info.plist */,
 				A620B7A71866102E00C8187C /* InfoPlist.strings */,
 				A620B7AA1866102E00C8187C /* main.m */,
@@ -242,6 +250,7 @@
 				A620B7B71866102E00C8187C /* Images.xcassets in Resources */,
 				A620B7A91866102E00C8187C /* InfoPlist.strings in Resources */,
 				A620B7B21866102E00C8187C /* Main.storyboard in Resources */,
+				CE81000918A9AFA200662F66 /* pong.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A620B7B51866102E00C8187C /* TFViewController.m in Sources */,
+				CEEBEF3418A989A60098B62C /* TFModel.m in Sources */,
 				A620B7D618661A5D00C8187C /* TFPaddle.m in Sources */,
 				A620B7AF1866102E00C8187C /* TFAppDelegate.m in Sources */,
 				A620B7D918661AAD00C8187C /* TFBall.m in Sources */,
