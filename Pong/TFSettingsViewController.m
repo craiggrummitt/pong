@@ -7,8 +7,9 @@
 //
 
 #import "TFSettingsViewController.h"
+#import "InfColorPicker.h"
 
-@interface TFSettingsViewController ()
+@interface TFSettingsViewController () <InfColorPickerControllerDelegate>
 
 @end
 
@@ -32,14 +33,23 @@
     self.navigationItem.title = @"Settings";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(didTapDoneButton)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(didTapCancelButton)];
-    [self renderView];
+    
+    [self performSelector:@selector(renderView) withObject:nil afterDelay:2];
 }
 - (void)renderView
 {
     [self renderColorPicker];
 }
 - (void) renderColorPicker {
+    InfColorPickerController* picker = [InfColorPickerController colorPickerViewController];
+	
+	picker.sourceColor = self.view.backgroundColor;
+	picker.delegate = self;
+	
+	[picker presentModallyOverViewController: self];
 }
+
+
 - (void)didTapDoneButton {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
