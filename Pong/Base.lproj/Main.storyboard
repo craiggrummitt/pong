@@ -22,16 +22,16 @@
                                 <color key="backgroundColor" red="1" green="0.88315544610661501" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="INSERT COIN"/>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" id="xuN-4d-cpJ"/>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" id="xuN-4d-cpJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V7p-ai-Iph">
-                                <rect key="frame" x="20" y="518" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="i29-j6-HHl">
+                                <rect key="frame" x="20" y="526" width="55" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.88315544609999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Config"/>
+                                <state key="normal" title="config"/>
                                 <connections>
-                                    <segue destination="EVC-pb-Jdv" kind="modal" id="JYd-m9-QZi"/>
+                                    <segue destination="jh4-zm-XiR" kind="modal" id="ASb-Cp-LR8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,29 +43,35 @@
             </objects>
             <point key="canvasLocation" x="-85" y="164"/>
         </scene>
-        <!--View Controller - Title-->
+        <!--Navigation Controller-->
+        <scene sceneID="Dnu-tz-Ovu">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="jh4-zm-XiR" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bf1-Oe-OsK">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EVC-pb-Jdv" kind="relationship" relationship="rootViewController" id="aa4-1a-A98"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kVY-2L-5NH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="524" y="687"/>
+        </scene>
+        <!--Settings View Controller-->
         <scene sceneID="te4-J4-Y9Z">
             <objects>
-                <viewController id="EVC-pb-Jdv" sceneMemberID="viewController">
+                <viewController id="EVC-pb-Jdv" customClass="TFSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fej-Kh-cwa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yFY-vB-ijB">
-                                <rect key="frame" x="0.0" y="72" width="320" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="zJB-d1-Bl0"/>
+                    <navigationItem key="navigationItem" id="zJB-d1-Bl0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyN-oK-bVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589" y="617"/>
+            <point key="canvasLocation" x="1003" y="687"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">

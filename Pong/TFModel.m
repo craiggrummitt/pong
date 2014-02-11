@@ -9,5 +9,11 @@
 #import "TFModel.h"
 
 @implementation TFModel
+- (void)resetScores;
+{
+    self.score1 = 0;
+    self.score2 = 0;
+}
+
 
 @end

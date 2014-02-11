@@ -12,4 +12,5 @@
 
 @property (assign, nonatomic) NSUInteger score1;
 @property (assign, nonatomic) NSUInteger score2;
+- (void)resetScores;
 @end

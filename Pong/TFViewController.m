@@ -5,6 +5,7 @@
 
 static NSString *TFViewControllerBoundaryIdentifierTop = @"top";
 static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
+static NSUInteger TFScoreWin = 4;
 
 
 @implementation TFViewController
@@ -53,7 +54,7 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
     [self.view addGestureRecognizer:self.tapToStartRecognizer];
     self.tapToStartRecognizer.enabled = NO;
     self.wellDone.hidden = YES;
-
+    self.wellDoneNormalWayUp = YES;
     // Show the 'tap to start' prompt
     [self promptNextBall];
 }
@@ -81,15 +82,17 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
             }
         self.score1Label.text = [NSString stringWithFormat:@" %lu - %lu",(unsigned long)self.model.score1,(unsigned long)self.model.score2];
         self.score2Label.text = [NSString stringWithFormat:@" %lu - %lu",(unsigned long)self.model.score1,(unsigned long)self.model.score2];
-        if (self.model.score1==10 || self.model.score2==10) {
+        if (self.model.score1==TFScoreWin || self.model.score2==TFScoreWin) {
             self.wellDone.hidden = NO;
-            if (self.wellDoneNormalWayUp && self.model.score1==10) {
+            if (self.wellDoneNormalWayUp && self.model.score1==TFScoreWin) {
                 self.wellDone.transform = CGAffineTransformMakeRotation(M_PI);
                 self.wellDoneNormalWayUp=NO;
-            } else if (!self.wellDoneNormalWayUp && self.model.score2==10) {
+            } else if (!self.wellDoneNormalWayUp && self.model.score2==TFScoreWin) {
                 self.wellDoneNormalWayUp=YES;
+                self.wellDone.transform = CGAffineTransformMakeRotation(M_PI);
             }
             self.wellDone.center = self.view.center;
+            [self.model resetScores];
         } else {
             self.startInstructions.hidden = NO;
         }
